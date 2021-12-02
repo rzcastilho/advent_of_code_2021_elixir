@@ -104,9 +104,7 @@ defmodule AdventOfCode2021.Day01 do
       1139
   """
   def part1() do
-    @input
-    |> String.split()
-    |> Enum.map(&String.to_integer/1)
+    transform_data()
     |> compare()
   end
 
@@ -119,11 +117,15 @@ defmodule AdventOfCode2021.Day01 do
       1103
   """
   def part2() do
+    transform_data()
+    |> group([])
+    |> compare()
+  end
+
+  defp transform_data() do
     @input
     |> String.split()
     |> Enum.map(&String.to_integer/1)
-    |> group([])
-    |> compare()
   end
 
   defp compare([first | rest]), do: compare(first, rest, 0)

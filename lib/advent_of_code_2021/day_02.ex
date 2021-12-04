@@ -101,12 +101,21 @@ defmodule AdventOfCode2021.Day02 do
     |> Enum.map(fn [command, value] -> {String.to_atom(command), String.to_integer(value)} end)
   end
 
-  defp command({:forward, value}, {horizontal_position, depth}), do: {horizontal_position + value, depth}
-  defp command({:down, value}, {horizontal_position, depth}), do: {horizontal_position, depth + value}
-  defp command({:up, value}, {horizontal_position, depth}), do: {horizontal_position, depth - value}
+  defp command({:forward, value}, {horizontal_position, depth}),
+    do: {horizontal_position + value, depth}
 
-  defp command({:forward, value}, {horizontal_position, depth, aim}), do: {horizontal_position + value, value * aim + depth, aim}
-  defp command({:down, value}, {horizontal_position, depth, aim}), do: {horizontal_position, depth, aim + value}
-  defp command({:up, value}, {horizontal_position, depth, aim}), do: {horizontal_position, depth, aim - value}
+  defp command({:down, value}, {horizontal_position, depth}),
+    do: {horizontal_position, depth + value}
 
+  defp command({:up, value}, {horizontal_position, depth}),
+    do: {horizontal_position, depth - value}
+
+  defp command({:forward, value}, {horizontal_position, depth, aim}),
+    do: {horizontal_position + value, value * aim + depth, aim}
+
+  defp command({:down, value}, {horizontal_position, depth, aim}),
+    do: {horizontal_position, depth, aim + value}
+
+  defp command({:up, value}, {horizontal_position, depth, aim}),
+    do: {horizontal_position, depth, aim - value}
 end

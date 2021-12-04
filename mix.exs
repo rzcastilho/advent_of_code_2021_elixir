@@ -15,7 +15,6 @@ defmodule AdventOfCode2021.MixProject do
       docs: [
         extras: ["README.md"]
       ]
-
     ]
   end
 

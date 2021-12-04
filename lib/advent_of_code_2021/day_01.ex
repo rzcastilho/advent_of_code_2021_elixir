@@ -135,9 +135,10 @@ defmodule AdventOfCode2021.Day01 do
   defp compare(_number, [next | rest], acc), do: compare(next, rest, acc)
   defp compare(_number, [], acc), do: acc
 
-  defp group([one, two, three | rest], acc), do: group([two, three | rest], acc ++ [one + two + three])
+  defp group([one, two, three | rest], acc),
+    do: group([two, three | rest], acc ++ [one + two + three])
+
   defp group([one, two | rest], acc), do: group([two | rest], acc ++ [one + two])
   defp group([one | rest], acc), do: group(rest, acc ++ [one])
   defp group([], acc), do: acc
-
 end
